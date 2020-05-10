@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:effects="clr-namespace:Foodies.VisualEffects"
+             mc:Ignorable="d"
+             x:Class="Foodies.Views.IngredientSelectorPage"
+             BackgroundColor="{StaticResource MediumGray}"
+             Title="AÑADIR A LA LISTA">
+    
+
+    <ContentPage.Content>
+       
+        <StackLayout>
+            <AbsoluteLayout>
+                <Grid x:Name="SearchPanel"
+                      AbsoluteLayout.LayoutBounds="0,0,1,60"
+                      AbsoluteLayout.LayoutFlags="WidthProportional,YProportional,XProportional"
+                      BackgroundColor="{StaticResource MediumGray}" 
+                      Margin="0" Padding="0">
+                    
+                    <Frame x:Name="BorderFrame" 
+                           HorizontalOptions="FillAndExpand"
+                           HasShadow="False"
+                           BackgroundColor="White"
+                           BorderColor="{DynamicResource CapraboBlue}"                            
+                           Padding="10,2 " Margin="15,10"
+                           CornerRadius="12">
+                        <Grid BackgroundColor="White"
+                              Margin="0,0,0,0"
+                              Padding="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" 
+                                  BackgroundColor="White" 
+                                  Margin="0,0,-5,0"
+                                  Padding="0,0,0,0"
+                                  >
+                                <Entry x:Name="SearchBoxEntry" 
+                                   Placeholder="Que buscas?"
+                                   PlaceholderColor="{StaticResource DarkGray}"                                   
+                                   Margin="0,-8,0,-8" 
+                                   BackgroundColor="White"
+                                   TextChanged="SearchBoxEntry_TextChanged">
+                                    <Entry.Effects>
+                                        <effects:LinelessEntry/>
+                                    </Entry.Effects>
+                                </Entry>
+                            </Grid>
+                            <Image x:Name="SearchIcon"
+                                Grid.Column="1" 
+                                Source="searchCapraboblue.png"
+                                Margin="5">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+
+                    </Frame>
+                </Grid>
+            </AbsoluteLayout>
+            <RefreshView x:Name="RefreshViewControl"
+                         IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                         RefreshColor="{StaticResource CapraboBlue}"
+                         BackgroundColor="{StaticResource MediumGray}" 
+                         Margin="0,-6,0,-6"
+                         VerticalOptions="Start"
+                         Command="{Binding LoadIngredientsCommand}">
+               
+                <CollectionView x:Name="IngredientsView" BackgroundColor="Transparent"
+                                VerticalOptions="Start"
+                                SizeChanged="IngredientsView_SizeChanged"
+                                ItemsSource="{Binding Ingredients}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="{StaticResource MediumGray}"
+                                  Padding="0,0,0,3">
+                                <Grid BackgroundColor="{StaticResource LightGray}"
+                                      HeightRequest="60">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="60"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="plus_circle_gray.png"
+                                            Margin="15"
+                                            BackgroundColor="Transparent">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                NumberOfTapsRequired="1" 
+                                                Tapped="AddIngredientButtonClicked"
+                                                />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    
+                                    <Label
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"
+                                        FontSize="Large"
+                                        TextColor="Black"
+                                        FontFamily="sans-serif-light"
+                                        Text="{Binding Name}"/>
+
+                                    <Image x:Name="IngredientIcon"
+                                           Grid.Column="2"
+                                           Margin="15"
+                                           Source="icon_sugar.png">
+                                    </Image>
+                                        
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </RefreshView>
+           
+            <AbsoluteLayout Margin="0,-3,0,0">
+                <Grid HeightRequest="60" WidthRequest="55"  Padding="0,3,0,0"
+                      BackgroundColor="{StaticResource MediumGray}"
+                      AbsoluteLayout.LayoutBounds="0.5,1,1,70"
+                      AbsoluteLayout.LayoutFlags="YProportional,XProportional,WidthProportional"
+                      IsVisible="True">
+                    <Grid BackgroundColor="{StaticResource LightGray}">
+                        <Frame BorderColor="{StaticResource CapraboBlue}"
+                                   BackgroundColor="{StaticResource LightGray}"
+                                   CornerRadius="10"
+                                   Margin="70,11" 
+                                   HasShadow="False">
+                            <Button Text="Añadir ingrediente"
+                            FontFamily="sans-serif-light"
+                            FontSize="Medium"
+                            Margin="0,-11,0,-10" Padding="0"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="{StaticResource CapraboBlue}"
+                            Clicked="CreateNewIngredientClicked"
+                            />
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </AbsoluteLayout>
+        </StackLayout>
+       
+    </ContentPage.Content>
+    
+</ContentPage>

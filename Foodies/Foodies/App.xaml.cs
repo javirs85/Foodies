@@ -13,7 +13,9 @@ namespace Foodies
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            ResourcesController.LoadAll();
+
+            DependencyService.Register<WebDataStorage>();
             MainPage = new MainPage();
         }
 

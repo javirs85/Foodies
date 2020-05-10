@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Foodies.Models;
+using Foodies.Services;
 
 namespace Foodies.Views
 {
@@ -21,7 +22,8 @@ namespace Foodies.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            ResourcesController.CurrentSubSite = ResourcesController.SubSites.Caprabo;
+            MenuPages.Add((int)ResourcesController.SubSites.Caprabo, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,11 +32,17 @@ namespace Foodies.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)ResourcesController.SubSites.Caprabo:
+                        MenuPages.Add(id, new NavigationPage(new CapraboPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)ResourcesController.SubSites.Lidl:
+                        MenuPages.Add(id, new NavigationPage(new LidlPage()));
+                        break;
+                    case (int)ResourcesController.SubSites.Menu:
+                        MenuPages.Add(id, new NavigationPage(new WeeklyMenuPage()));
+                        break;
+                    case (int)ResourcesController.SubSites.Recipes:
+                        MenuPages.Add(id, new NavigationPage(new RecipesPage()));
                         break;
                 }
             }

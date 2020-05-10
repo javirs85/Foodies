@@ -14,6 +14,18 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+            
+            <!-- Colors -->
+            <Color x:Key="MediumGray">#E5E5E5</Color>
+            <Color x:Key="LightGray">#F3F3F3</Color>
+            <Color x:Key="DarkGray">#C4C4C4</Color>
+            
+            <Color x:Key="CapraboBlue">#1AB7EA</Color>
+            <Color x:Key="CapraboRed">#E33123</Color>
+            <Color x:Key="LidlBlue">#0050AA</Color>
+            <Color x:Key="RecetasGreen">#1D7E0D</Color>
+            <Color x:Key="MenuRed">#EF5350</Color>
+            
         </ResourceDictionary>
     </Application.Resources>
     

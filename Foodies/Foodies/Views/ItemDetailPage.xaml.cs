@@ -26,10 +26,10 @@ namespace Foodies.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new FoodItem
             {
-                Text = "Item 1",
-                Description = "This is an item description."
+                Name = "Item 1",
+                UnitsID = 22
             };
 
             viewModel = new ItemDetailViewModel(item);

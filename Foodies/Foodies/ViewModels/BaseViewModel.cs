@@ -12,7 +12,7 @@ namespace Foodies.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<FoodItem> DataStore => DependencyService.Get<IDataStore<FoodItem>>();
 
         bool isBusy = false;
         public bool IsBusy
