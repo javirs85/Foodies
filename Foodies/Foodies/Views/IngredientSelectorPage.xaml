@@ -109,7 +109,7 @@
                                     <Image x:Name="IngredientIcon"
                                            Grid.Column="2"
                                            Margin="15"
-                                           Source="icon_sugar.png">
+                                           Source="{Binding Image}">
                                     </Image>
                                         
                                 </Grid>
@@ -127,20 +127,23 @@
                       AbsoluteLayout.LayoutFlags="YProportional,XProportional,WidthProportional"
                       IsVisible="True">
                     <Grid BackgroundColor="{StaticResource LightGray}">
-                        <Frame BorderColor="{StaticResource CapraboBlue}"
+                        <Frame     x:Name="AddButton"
+                                   BorderColor="{StaticResource CapraboBlue}"
                                    BackgroundColor="{StaticResource LightGray}"
                                    CornerRadius="10"
                                    Margin="70,11" 
                                    HasShadow="False">
-                            <Button Text="Añadir ingrediente"
-                            FontFamily="sans-serif-light"
-                            FontSize="Medium"
-                            Margin="0,-11,0,-10" Padding="0"
-                            BackgroundColor="Transparent"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="CenterAndExpand"
-                            TextColor="{StaticResource CapraboBlue}"
-                            Clicked="CreateNewIngredientClicked"
+                            <Button 
+                                x:Name="CreateNewIngredientButton"
+                                Text="Añadir ingrediente"
+                                FontFamily="sans-serif-light"
+                                FontSize="Medium"
+                                Margin="0,-11,0,-10" Padding="0"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="{StaticResource CapraboBlue}"
+                                Clicked="CreateNewIngredientClicked"
                             />
                         </Frame>
                     </Grid>

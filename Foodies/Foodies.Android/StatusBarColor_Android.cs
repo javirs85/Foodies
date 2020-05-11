@@ -1,12 +1,11 @@
-﻿using System.Runtime.CompilerServices;
-using Android.OS;
+﻿using Android.OS;
 using Foodies.Droid;
-using Foodies.VisualEffects.Droid;
+using Foodies.Views.VisualEffects;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: Xamarin.Forms.Dependency(typeof(StatusBarColor_Android))]
 
-namespace Foodies.VisualEffects.Droid
+namespace Foodies.Droid
 { 
     public class StatusBarColor_Android : IStatusBarColor
     {

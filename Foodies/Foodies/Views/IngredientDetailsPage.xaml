@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Foodies="clr-namespace:Foodies.Models"
+             xmlns:effects="clr-namespace:Foodies.VisualEffects"
+             mc:Ignorable="d"
+             BackgroundColor="{StaticResource MediumGray}"
+             x:Class="Foodies.Views.IngredientDetailsPage">
+    <ContentPage.Content>
+        <StackLayout >
+            <Grid BackgroundColor="{StaticResource LightGray}"
+                  Padding="20,0"
+                  >
+                <Entry x:Name="SelectedName" 
+                   HeightRequest="80" 
+                   Text="{Binding Item.Name, Mode=TwoWay}" FontSize="Large" FontFamily="sans-serif">
+                    <Entry.Effects>
+                        <effects:LinelessEntry/>
+                    </Entry.Effects>
+                </Entry>
+            </Grid>
+            <Grid BackgroundColor="{StaticResource LightGray}"
+                  Padding="0,0"
+                   HeightRequest="60"
+                  >
+                <Picker x:Name="SelectedUnits" ItemsSource="{Binding unitsStr}"
+                            Margin="20,10" FontFamily="sans-serif"
+                        >
+                    <Picker.Effects>
+                        <effects:LinelessEntry/>
+                    </Picker.Effects>
+                </Picker>
+            </Grid>
+
+            <Grid>
+                <Radio
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

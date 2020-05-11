@@ -8,8 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Content;
 using Xamarin.Forms;
-using Foodies.VisualEffects;
-using Foodies.VisualEffects.Droid;
+using Foodies.Views.VisualEffects;
 
 namespace Foodies.Droid
 {
@@ -20,8 +19,6 @@ namespace Foodies.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            DependencyService.Register<IStatusBarColor>();
-
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

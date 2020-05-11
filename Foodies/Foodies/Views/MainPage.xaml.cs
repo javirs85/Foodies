@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using Foodies.Models;
 using Foodies.Services;
+using Foodies.Views.VisualEffects;
 
 namespace Foodies.Views
 {
@@ -22,8 +20,8 @@ namespace Foodies.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            ResourcesController.CurrentSubSite = ResourcesController.SubSites.Caprabo;
             MenuPages.Add((int)ResourcesController.SubSites.Caprabo, (NavigationPage)Detail);
+            ResourcesController.CurrentSubSite = ResourcesController.SubSites.Caprabo;
         }
 
         public async Task NavigateFromMenu(int id)

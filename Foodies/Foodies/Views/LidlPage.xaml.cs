@@ -33,7 +33,7 @@ namespace Foodies.Views
         {
             var layout = (BindableObject)sender;
             var item = (FoodItem)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(new IngredientDetailViewModel(item)));
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

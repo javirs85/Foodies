@@ -13,9 +13,9 @@ namespace Foodies.Views
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        IngredientDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ItemDetailPage(IngredientDetailViewModel viewModel)
         {
             InitializeComponent();
 
@@ -32,7 +32,7 @@ namespace Foodies.Views
                 UnitsID = 22
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new IngredientDetailViewModel(item);
             BindingContext = viewModel;
         }
     }

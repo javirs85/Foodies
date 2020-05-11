@@ -1,4 +1,5 @@
-﻿using Foodies.VisualEffects;
+﻿using Foodies.Views.VisualEffects;
+using Foodies.VisualEffects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,24 +20,18 @@ namespace Foodies.Services
             set
             {
                 _currentSubsite = value;
-                if (CurrentSubSite == SubSites.Caprabo)
-                {
-                    var dp = DependencyService.Get<IStatusBarColor>();
-                    dp?.MakeMe(Color.Blue.ToHex());
-                }
-                else if (CurrentSubSite == SubSites.Lidl)
-                {
-                    try
-                    {
-                        var statusBarColor = DependencyService.Get<IStatusBarColor>();
-                        statusBarColor?.MakeMe(Color.Blue.ToHex());
-                    }
-                    catch (Exception e)
-                    {
-                        int a = 2;
-                        a++;
-                    }
-                }
+
+
+                if (ResourcesController.CurrentSubSite == ResourcesController.SubSites.Caprabo)
+                    DependencyService.Get<IStatusBarColor>()?.MakeMe(CapraboBlue.ToHex());
+                else if (ResourcesController.CurrentSubSite == ResourcesController.SubSites.Lidl)
+                    DependencyService.Get<IStatusBarColor>()?.MakeMe(LidlBlue.ToHex());
+                else if (CurrentSubSite == SubSites.Menu)
+                    DependencyService.Get<IStatusBarColor>()?.MakeMe(MenuRed.ToHex());
+                else if (CurrentSubSite == SubSites.Recipes)
+                    DependencyService.Get<IStatusBarColor>()?.MakeMe(RecipesGreen.ToHex());
+
+
             }
         }
 
@@ -65,6 +60,9 @@ namespace Foodies.Services
         public static Color MediumGray; 
         public static Color DarkGray;
 
+        public static ImageSource IconMeat;
+        public static ImageSource IconSugar;
+
         public static void LoadAll()
         {
             try
@@ -76,6 +74,9 @@ namespace Foodies.Services
                 LightGray = (Color)Xamarin.Forms.Application.Current.Resources["LightGray"];
                 MediumGray = (Color)Xamarin.Forms.Application.Current.Resources["MediumGray"];
                 DarkGray = (Color)Xamarin.Forms.Application.Current.Resources["DarkGray"];
+
+                IconMeat = ImageSource.FromFile("icon_meat.png");
+                IconSugar = ImageSource.FromFile("icon_sugar.png"); 
             }
             catch
             {

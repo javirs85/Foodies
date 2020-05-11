@@ -25,8 +25,7 @@ namespace Foodies.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-
-            BorderFrame.BackgroundColor = Foodies.Services.ResourcesController.CurrentAccentColor;
+            
             BindingContext = viewModel = new IngredientListViewModel();
         }
 
@@ -43,14 +42,15 @@ namespace Foodies.Views
             if(ResourcesController.CurrentSubSite == ResourcesController.SubSites.Caprabo)
             {
                 GlassIcon = ImageSource.FromFile("searchCapraboblue.png");
-                BorderFrame.BorderColor = (Color) Application.Current.Resources["CapraboBlue"];
             }
             else if(ResourcesController.CurrentSubSite == ResourcesController.SubSites.Lidl)
             {
                 GlassIcon = ImageSource.FromFile("searchLidlblue.png");
-                BorderFrame.BorderColor = (Color)Application.Current.Resources["LidlBlue"];
             }
             SearchIcon.Source = GlassIcon;
+            BorderFrame.BorderColor = ResourcesController.CurrentAccentColor;
+            AddButton.BorderColor = ResourcesController.CurrentAccentColor;
+            CreateNewIngredientButton.TextColor = ResourcesController.CurrentAccentColor;
         }
 
         private void SearchBoxEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -98,8 +98,11 @@ namespace Foodies.Views
         {
         }
 
-        private void CreateNewIngredientClicked(object sender, EventArgs e)
+        private async void CreateNewIngredientClicked(object sender, EventArgs e)
         {
+            FoodItem newItem = new FoodItem();
+            newItem.Name = SearchBoxEntry.Text;
+            await Navigation.PushAsync(new IngredientDetailsPage(new IngredientDetailViewModel(newItem)));
         }
 
         private void IngredientsView_SizeChanged(object sender, EventArgs e)
